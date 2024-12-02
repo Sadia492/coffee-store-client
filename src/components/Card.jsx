@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaPen } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 export default function Card({ coffee, coffees, setCoffees }) {
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
@@ -41,30 +44,39 @@ export default function Card({ coffee, coffees, setCoffees }) {
   };
 
   return (
-    <div>
-      <div className="card card-side bg-base-100 shadow-xl">
+    <div className="">
+      <div className="card card-side bg-base-100 justify-between p-4 items-center text-start shadow-xl">
         <figure>
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            alt="Movie"
-          />
+          <img src={photo} alt="Movie" />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-          <p>{details}</p>
-          <div className="card-actions justify-end">
-            <div className="join join-vertical gap-4">
-              <button className="btn join-item">Watch</button>
-              <Link to={`/coffees/${_id}`}>
-                <button className="btn join-item">Update</button>
-              </Link>
-              <button
-                onClick={() => handleDelete(_id)}
-                className="btn join-item"
-              >
-                Delete
+
+        <div className="flex-grow">
+          <h2>
+            <span className="font-bold">Name:</span> {name}
+          </h2>
+          <p>
+            <span className="font-bold">Chef:</span> {chef}
+          </p>
+          <p>
+            <span className="font-bold">Price:</span> 890 taka
+          </p>
+        </div>
+        <div className="">
+          <div className="join join-vertical gap-4">
+            <button className="btn rounded-md bg-[#D2B48C] text-white">
+              <FaEye />
+            </button>
+            <Link to={`/coffees/${_id}`}>
+              <button className="btn rounded-md bg-black text-white">
+                <FaPen />
               </button>
-            </div>
+            </Link>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn rounded-md bg-red-600 text-white"
+            >
+              <FaTrash />
+            </button>
           </div>
         </div>
       </div>

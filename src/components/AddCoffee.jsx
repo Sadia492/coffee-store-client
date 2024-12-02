@@ -33,6 +33,7 @@ export default function AddCoffee() {
             confirmButtonText: "Cool",
           });
         }
+        form.reset();
       })
       .catch((error) => {
         console.error("Error occurred:", error);
