@@ -14,7 +14,7 @@ export default function AddCoffee() {
     const photo = form.photo.value;
     const coffee = { name, chef, supplier, taste, category, details, photo };
 
-    fetch("http://localhost:5000/coffees", {
+    fetch("https://coffee-store-server-seven-rho.vercel.app/coffees", {
       method: "POST",
       headers: {
         "content-type": "application/json",

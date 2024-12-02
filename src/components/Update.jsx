@@ -18,7 +18,7 @@ export default function Update() {
     const photo = form.photo.value;
     const coffee = { name, chef, supplier, taste, category, details, photo };
 
-    fetch(`http://localhost:5000/coffees/${_id}`, {
+    fetch(`https://coffee-store-server-seven-rho.vercel.app/coffees/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
