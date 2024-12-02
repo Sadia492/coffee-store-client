@@ -4,6 +4,7 @@ import Card from "./Card";
 import Banner from "./Banner";
 import Features from "./Features";
 import bgCup from "../assets/images/more/1.png";
+import Footer from "./Footer";
 export default function Home() {
   const loadedCoffees = useLoaderData();
   const [coffees, setCoffees] = useState(loadedCoffees);
@@ -23,7 +24,7 @@ export default function Home() {
         <Link to="/addCoffee">
           <button className="btn bg-[#E3B577] text-white">Add Coffee</button>
         </Link>
-        <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto">
+        <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto mt-6">
           {coffees.map((coffee) => (
             <Card
               key={coffee._id}
@@ -34,6 +35,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

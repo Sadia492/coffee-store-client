@@ -45,7 +45,7 @@ export default function Card({ coffee, coffees, setCoffees }) {
 
   return (
     <div className="">
-      <div className="card card-side bg-base-100 justify-between p-4 items-center text-start shadow-xl">
+      <div className="card card-side bg-[#F5F4F1] justify-between p-4 items-center text-start shadow-xl">
         <figure>
           <img src={photo} alt="Movie" />
         </figure>
@@ -63,9 +63,11 @@ export default function Card({ coffee, coffees, setCoffees }) {
         </div>
         <div className="">
           <div className="join join-vertical gap-4">
-            <button className="btn rounded-md bg-[#D2B48C] text-white">
-              <FaEye />
-            </button>
+            <Link to={`/coffees/details/${_id}`}>
+              <button className="btn rounded-md bg-[#D2B48C] text-white">
+                <FaEye />
+              </button>
+            </Link>
             <Link to={`/coffees/${_id}`}>
               <button className="btn rounded-md bg-black text-white">
                 <FaPen />

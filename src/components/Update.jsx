@@ -1,8 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { FaArrowLeft } from "react-icons/fa";
 export default function Update() {
+  const navigate = useNavigate();
   const loadedCoffee = useLoaderData();
   const { _id, name, chef, supplier, taste, category, details, photo } =
     loadedCoffee;
@@ -46,6 +47,13 @@ export default function Update() {
 
   return (
     <div className="bg-[#F4F3F0] px-24 py-12">
+      <button
+        onClick={() => navigate(-1)}
+        className="text-2xl items-center justify-center flex"
+      >
+        <FaArrowLeft />
+        Back To Home
+      </button>
       <h1 className="font-extrabold text-3xl text-center">Update Coffee</h1>
       <p className="text-center">
         It is a long established fact that a reader will be distraceted by the

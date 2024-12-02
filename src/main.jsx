@@ -12,11 +12,14 @@ import Home from "./components/Home.jsx";
 import AddCoffee from "./components/AddCoffee.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import Update from "./components/Update.jsx";
+import Details from "./components/Details.jsx";
+import ErrorPage from "./components/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -27,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/addCoffee",
         element: <AddCoffee></AddCoffee>,
+      },
+      {
+        path: "/coffees/details/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(
+            `https://coffee-store-server-seven-rho.vercel.app/coffees/${params.id}`
+          ),
       },
       {
         path: "/coffees/:id",
