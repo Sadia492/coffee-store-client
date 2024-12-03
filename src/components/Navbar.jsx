@@ -1,8 +1,19 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/more/logo1.png";
+import { authContext } from "../AuthProvider/AuthProvider";
 
 export default function Navbar() {
+  const { user, signOutUser } = useContext(authContext);
+
+  const handleSignOut = async () => {
+    try {
+      await signOutUser();
+      console.log("User signed out");
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
   const links = (
     <>
       <NavLink to="/">
@@ -10,6 +21,9 @@ export default function Navbar() {
       </NavLink>
       <NavLink to="/addCoffee">
         <li>Add Coffee</li>
+      </NavLink>
+      <NavLink to="/dashboard">
+        <li>Dashboard</li>
       </NavLink>
     </>
   );
@@ -51,7 +65,15 @@ export default function Navbar() {
           <ul className="menu menu-horizontal px-1 gap-4">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {user ? (
+            <Link onClick={handleSignOut} className="btn">
+              Log Out
+            </Link>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

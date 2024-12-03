@@ -14,6 +14,11 @@ import MainLayout from "./layout/MainLayout.jsx";
 import Update from "./components/Update.jsx";
 import Details from "./components/Details.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
+import AuthProvider from "./AuthProvider/AuthProvider.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,11 +34,36 @@ const router = createBrowserRouter([
       },
       {
         path: "/addCoffee",
-        element: <AddCoffee></AddCoffee>,
+        element: (
+          <PrivateRoute>
+            <AddCoffee></AddCoffee>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/users"),
       },
       {
         path: "/coffees/details/:id",
-        element: <Details></Details>,
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://coffee-store-server-seven-rho.vercel.app/coffees/${params.id}`
@@ -53,6 +83,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
