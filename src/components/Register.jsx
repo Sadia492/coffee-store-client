@@ -19,7 +19,7 @@ export default function Register() {
         console.log(result.user);
         const time = result.user.metadata.creationTime;
         const data = { name, email, time };
-        fetch("http://localhost:5000/users", {
+        fetch("https://coffee-store-server-seven-rho.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

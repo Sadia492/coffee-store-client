@@ -55,7 +55,8 @@ const router = createBrowserRouter([
             <Dashboard></Dashboard>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () =>
+          fetch("https://coffee-store-server-seven-rho.vercel.app/users"),
       },
       {
         path: "/coffees/details/:id",

@@ -23,7 +23,7 @@ export default function Login() {
       //   setUser({ ...result.user, time: lastSignInTime });
       const data = { email, lastSignInTime };
       console.log(data);
-      fetch("http://localhost:5000/users", {
+      fetch("https://coffee-store-server-seven-rho.vercel.app/users", {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
